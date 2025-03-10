@@ -14,6 +14,8 @@ class PersonaTest extends Persona {
 	private static persona.Persona laila;
 	private static persona.Persona pepe;
 
+	
+	
 	@BeforeAll
 	public static void setUpBeforeClass() throws Exception {
 	
@@ -21,7 +23,30 @@ class PersonaTest extends Persona {
 	laila= new Persona("Laila", 18, 'M',58.0, 160.0);
 	pepe= new Persona("Pepe", 18, 'H',91.0, 185.0);
 	}
+		
+		@Test
+		void testToString() {
+			Persona carlos2= new Persona("carlos", 18, 'H');
+		    String primero= "Informacion de la persona:\n"
+	                + "Nombre: " + "carlos" + "\n"
+	                + "Sexo: " + "hombre" + "\n"
+	                + "Edad: " + 18 + " años\n"
+	                + "DNI: " + carlos2.getDNI() + "\n";
+	              
+		                  
+	
+		    assertTrue(carlos2.toString().contains(primero));		    
+		}
 
+	
+		@Test 
+		void comprobarSexoPorDefecto() {
+			Persona nueva=new Persona ("nueva",18,'N', 45.0, 190.0);
+			assertEquals('H', nueva.getSexo());
+			
+		}
+		
+	
 		@Test
 	    void testCalcularIMC_PesoIdeal() {
 		  carlos.setPeso(70.0);
@@ -87,10 +112,10 @@ class PersonaTest extends Persona {
 	    @Test
 	    void testComprobarSexo_Incorrecto() {
 	    	 pepe.setSexo('M');
-	    	 assertFalse('M', pepe.getSexo());
+	    	 assertEquals('M', pepe.getSexo());
 	    	 
 	    	 carlos.setSexo('H');
-	    	 assertF('H', carlos.getSexo());
+	    	 assertEquals('H', carlos.getSexo());
 	    	 
 	    	 laila.setSexo('M');
 	    	 assertEquals('M', laila.getSexo());
@@ -137,21 +162,5 @@ class PersonaTest extends Persona {
 			 laila.setPeso(69.0);
 			 pepe.setPeso(67.2);
 		}
-	
-		@Test
-		void testSetAltura() {
-			fail("Not yet implemented");
-		}
-	
-	
-		@Test
-		void testEsMayorDeEdad() {
-			fail("Not yet implemented");
-		}
-	
-		@Test
-		void testToString() {
-			fail("Not yet implemented");
-		}
-
+		
 }
